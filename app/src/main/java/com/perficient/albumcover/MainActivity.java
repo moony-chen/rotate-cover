@@ -2,11 +2,18 @@ package com.perficient.albumcover;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
+import android.animation.ObjectAnimator;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -58,6 +65,20 @@ public class MainActivity extends AppCompatActivity {
         Glide.with(this)
                 .load("https://i.pinimg.com/originals/ba/a1/21/baa1219f33c105c4980e38c6e59f56f6.jpg")
                 .apply(RequestOptions.circleCropTransform()).into(cover);
+
+
+        Button toggle = findViewById(R.id.toggle);
+        Animator animator = AnimatorInflater.loadAnimator(this, R.animator.rotate);
+        animator.setTarget(cover);
+        toggle.setOnClickListener(v -> {
+            if (!animator.isStarted()) {
+                animator.start();
+            } else if (animator.isPaused()) {
+                animator.resume();
+            } else {
+                animator.pause();
+            }
+        });
 
 
     }

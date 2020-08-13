@@ -24,6 +24,12 @@
         android:layout_gravity="center"
         />
 
+    <Button
+        android:id="@+id/toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Toggle Rotation"/>
+
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
